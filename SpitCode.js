@@ -1,5 +1,5 @@
 // Split code based on index
-let ibPersonCode = "AA3911";
+let ibPersonCode = "AAAA99";
 let max = new Map();
 
 let alphaIndex = "";
@@ -21,11 +21,11 @@ for (
     ibPersonCodeCharacter++
 ) {
     if (isNaN(Number(ibPersonCode.charAt(ibPersonCodeCharacter)))) {
-        // console.log(
-        //     `OUTPUT ${ibPersonCodeCharacter}: ${isNaN(
-        //         Number(ibPersonCode.charAt(ibPersonCodeCharacter))
-        //     )}`
-        // );
+        console.log(
+            `OUTPUT ${ibPersonCodeCharacter}: ${isNaN(
+                Number(ibPersonCode.charAt(ibPersonCodeCharacter))
+            )}`
+        );
         alphaIndex += ibPersonCode.charAt(ibPersonCodeCharacter);
     } else {
         codeNumber += ibPersonCode.charAt(ibPersonCodeCharacter);
@@ -34,4 +34,15 @@ for (
 
 console.log(`Alpha code: ${alphaIndex}`);
 console.log(`Number code: ${Number(codeNumber)}`);
-b;
+
+class AlphabeticCharacter {
+    constructor(character, position, lastCharacter) {
+        this.character = character;
+        this.position = position;
+        this.lastCharacter = lastCharacter;
+    }
+}
+
+let ac = new AlphabeticCharacter("a", 1, false);
+
+console.log(`ac ${JSON.stringify(ac, null, 4)}`);
