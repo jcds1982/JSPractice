@@ -1,58 +1,36 @@
-const generateCode = () => {
-    // Split code based on index
-    // I need to work on something different
-    let ibPersonCode = "AAAA99";
-    let max = new Map();
-
+// Split code based on index
+let generateCode = (ibPersonCode) => {
     let alphaIndex = "";
     let codeNumber = "";
-
-    max.set(1, 1);
-    max.set(2, 2);
-    max.set(3, 2);
-    max.set(3, 5);
-    console.log(max);
-
+    let message = "";
     let ibPersonCodeLength = ibPersonCode.length;
-    console.log(ibPersonCodeLength);
-    // console.log(Number("a"));
-    //console.log("OUTPUT : ", isNaN(Number(ibPersonCode.charAt(0))));
 
     for (
         ibPersonCodeCharacter = 0;
         ibPersonCodeCharacter <= ibPersonCodeLength - 1;
         ibPersonCodeCharacter++
     ) {
+        message = `CHARACTER #${ibPersonCodeCharacter + 1}: ${isNaN(
+            Number(ibPersonCode.charAt(ibPersonCodeCharacter))
+        )}`;
         if (isNaN(Number(ibPersonCode.charAt(ibPersonCodeCharacter)))) {
-            console.log(
-                `OUTPUT ${ibPersonCodeCharacter}: ${isNaN(
-                    Number(ibPersonCode.charAt(ibPersonCodeCharacter))
-                )}`
-            );
             alphaIndex += ibPersonCode.charAt(ibPersonCodeCharacter);
         } else {
             codeNumber += ibPersonCode.charAt(ibPersonCodeCharacter);
         }
+        console.log(message);
     }
 
     console.log(`Alpha code: ${alphaIndex}`);
-    console.log(`Number code: ${Number(codeNumber)}`);
+    console.log(`Number code: ${Number(codeNumber)} \n`);
+    document.getElementById("codeEnteredResult").innerHTML = `${message}`;
 };
 
-class AlphabeticCharacter {
-    constructor(character, position, lastCharacter) {
-        this.character = character;
-        this.position = position;
-        this.lastCharacter = lastCharacter;
-    }
-}
-
-function transferCodeToLabel(personCode) {
+// Transfer the code entered to a html label.
+let transferCodeToLabel = (personCode) => {
     let codeEntered = document.getElementById("personCode");
     let codeEnteredLabel = document.getElementById("codeEntered");
-
+    console.log(`Code entered: ${codeEntered.value}`);
+    generateCode(codeEntered.value);
     codeEnteredLabel.innerText = codeEntered.value;
-    console.log(`Code entered --> ${codeEntered.value}`);
-    let ac = new AlphabeticCharacter("a", 1, false);
-    console.log(`ac ${JSON.stringify(ac, null, 4)}`);
-}
+};
